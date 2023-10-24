@@ -1,7 +1,7 @@
 <div>
   <mat-list role="list">
     <mat-list-item role="listitem" *ngFor="let todo of todos">
-      <input type="checkbox" name="done" [checked]="todo.status" /> {{ todo.title }}
+      <input type="checkbox" name="done" [checked]="todo.status" (change)="onCheckboxStateChange(todo)" /> {{ todo.title }}
     </mat-list-item>
   </mat-list>
 </div>
