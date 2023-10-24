@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../environments/environment";
 import { Todo } from "./todo";
 import { catchError, Observable, of } from "rxjs";
@@ -8,14 +8,27 @@ import { catchError, Observable, of } from "rxjs";
   providedIn: 'root'
 })
 export class TodoService {
-  private apiServerUrl = environment.apiUrl;
+  private apiUrl = `${environment.apiUrl}todo/`;
 
   constructor(private httpClient: HttpClient) { }
 
   public getTodos(): Observable<Todo[]> {
-    return this.httpClient.get<Todo[]>(`${this.apiServerUrl}todo/`)
+    return this.httpClient.get<Todo[]>(this.apiUrl)
       .pipe(
         catchError(this.handleError<Todo[]>('getTodos', []))
+      );
+  }
+
+  public updateTodoStatus(todo: Todo): Observable<Todo> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json-patch+json'
+      }),
+    };
+
+    return this.httpClient.patch<Todo>(`${this.apiUrl}${todo.id}`, { status: !todo.status }, httpOptions)
+      .pipe(
+        catchError(this.handleError<Todo>('checkTodo', todo))
       );
   }
 

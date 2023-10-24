@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatListModule } from '@angular/material/list';
 import { TodoService } from "../todo.service";
 import { Todo } from "../todo";
 
@@ -18,6 +17,14 @@ export class TodoListComponent implements OnInit {
       (response: Todo[]) => {
         this.todos = response;
         console.log('Todos retrieved');
+      }
+    );
+  }
+
+  onCheckboxStateChange(todo: Todo): void {
+    this.todoService.updateTodoStatus(todo).subscribe(
+      (updatedTodo: Todo) => {
+        todo.status = updatedTodo.status
       }
     );
   }
