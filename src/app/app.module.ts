@@ -8,11 +8,13 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import {MatListModule} from "@angular/material/list";
 import {TodoService} from "./todo.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { TodoViewComponent } from './todo-view/todo-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
+    TodoViewComponent,
   ],
   imports: [
     BrowserModule,

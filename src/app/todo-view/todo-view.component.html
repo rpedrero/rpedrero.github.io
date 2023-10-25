@@ -1,0 +1,9 @@
+<div *ngIf="todo">
+  <a [routerLink]="['/todo']">Back to list</a>
+
+  <h1>{{ todo.title }}</h1>
+
+  <p><strong>Description:</strong> {{ todo.description }}</p>
+
+  <p><strong>Status:</strong> {{ getStatusString() }}</p>
+</div>
