@@ -1,7 +1,7 @@
 <div>
   <mat-list role="list">
     <mat-list-item role="listitem" *ngFor="let todo of todos">
-      <input type="checkbox" name="done" [checked]="todo.status" (change)="onCheckboxStateChange(todo)" /> {{ todo.title }}
+      <input type="checkbox" name="done" [checked]="todo.status" (change)="onCheckboxStateChange(todo)" /> <a [routerLink]="['/todo', todo.id]">{{ todo.title }}</a>
     </mat-list-item>
   </mat-list>
 </div>

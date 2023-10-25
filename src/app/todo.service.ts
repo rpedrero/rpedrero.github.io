@@ -19,6 +19,13 @@ export class TodoService {
       );
   }
 
+  public getTodo(id: Number): Observable<Todo | undefined> {
+    return this.httpClient.get<Todo | undefined>(`${this.apiUrl}${id}`)
+      .pipe(
+        catchError(this.handleError<Todo | undefined>('getTodo', undefined))
+      );
+  }
+
   public updateTodoStatus(todo: Todo): Observable<Todo> {
     const httpOptions = {
       headers: new HttpHeaders({
