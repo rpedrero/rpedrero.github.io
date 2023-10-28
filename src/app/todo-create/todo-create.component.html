@@ -1,0 +1,27 @@
+<div>
+  <h1 class="mat-title">Create a new Todo</h1>
+
+  <a [routerLink]="['/todo']">Back to list</a>
+
+  <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+    <div class="mat-form-field">
+      <div class="mat-form-field-label">
+        <label for="title">Title</label>
+      </div>
+      <div class="mat-mdc-form-field-input-control">
+        <input id="title" type="text" formControlName="title" />
+      </div>
+    </div>
+    <div class="mat-form-field">
+      <div class="mat-form-field-label">
+        <label for="description">Description</label>
+      </div>
+      <div class="mat-mdc-form-field-input-control">
+        <input id="description" type="text" formControlName="description" />
+      </div>
+    </div>
+    <div class="mat-form-field">
+      <button type="submit" [disabled]="!todoForm.valid">Create Todo</button>
+    </div>
+  </form>
+</div>
