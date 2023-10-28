@@ -54,7 +54,7 @@ export class TodoService {
 
   private handleError<T>(operationName: String = 'operation', result?: T) {
     return (error: any) => {
-      console.log(error);
+      console.error(error);
 
       return of(result as T);
     }
