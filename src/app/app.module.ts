@@ -9,12 +9,16 @@ import {MatListModule} from "@angular/material/list";
 import {TodoService} from "./todo.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { TodoViewComponent } from './todo-view/todo-view.component';
+import { TodoCreateComponent } from './todo-create/todo-create.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
     TodoViewComponent,
+    TodoCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,6 +26,8 @@ import { TodoViewComponent } from './todo-view/todo-view.component';
     BrowserAnimationsModule,
     MatListModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

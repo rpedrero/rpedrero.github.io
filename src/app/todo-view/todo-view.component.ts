@@ -20,14 +20,13 @@ export class TodoViewComponent implements OnInit {
     this.todoService.getTodo(todoId).subscribe(
         (response: Todo | undefined) => {
           this.todo = response;
-          console.log('Todo retrieved');
         }
     );
   }
 
   getStatusString(): String {
     if(this.todo) {
-      return (this.todo?.status) ? "Done" : "To do";
+      return (this.todo?.status) ? 'Done' : 'To do';
     }
     else {
       return "";

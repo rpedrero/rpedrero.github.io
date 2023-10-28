@@ -39,6 +39,19 @@ export class TodoService {
       );
   }
 
+  public createTodo(todo: Todo): Observable<Todo | undefined> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+
+    return this.httpClient.post<Todo | undefined>(this.apiUrl, todo, httpOptions)
+      .pipe(
+        catchError(this.handleError<Todo>('createTodo', undefined))
+      );
+  }
+
   private handleError<T>(operationName: String = 'operation', result?: T) {
     return (error: any) => {
       console.log(error);
