@@ -2,7 +2,7 @@
   <a mat-raised-button color="primary" [routerLink]="['/todo/create']">New Todo</a>
   <mat-list role="list">
     <mat-list-item role="listitem" *ngFor="let todo of todos">
-      <input type="checkbox" name="done" [checked]="todo.status" (change)="onCheckboxStateChange(todo)" /> <a [routerLink]="['/todo', todo.id]">{{ todo.title }}</a>
+      <input type="checkbox" name="done" [checked]="todo.status" (change)="onCheckboxStateChange(todo)" /> <a [routerLink]="['/todo', todo.id]" [class.task-done]="todo.status">{{ todo.title }}</a>
     </mat-list-item>
   </mat-list>
 </div>
