@@ -1,0 +1,16 @@
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+button {
+  margin-bottom: 1.3em;
+}
+
+form {
+  display: flex;
+  flex-flow: column;
+  width: 50%;
+}
