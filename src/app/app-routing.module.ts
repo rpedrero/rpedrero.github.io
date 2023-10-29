@@ -5,6 +5,7 @@ import { TodoViewComponent } from "./todo-view/todo-view.component";
 import {TodoCreateComponent} from "./todo-create/todo-create.component";
 
 const routes: Routes = [
+  { path: '', component: TodoListComponent },
   { path: 'todo', component: TodoListComponent },
   { path: 'todo/create', component: TodoCreateComponent },
   { path: 'todo/:id', component: TodoViewComponent }
