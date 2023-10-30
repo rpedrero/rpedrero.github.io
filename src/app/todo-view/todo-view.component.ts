@@ -24,6 +24,17 @@ export class TodoViewComponent implements OnInit {
     );
   }
 
+  onCheckboxStateChange(): void {
+    if(this.todo !== undefined) {
+      this.todoService.updateTodoStatus(this.todo).subscribe(
+        (updatedTodo: Todo) => {
+          (<Todo> this.todo).status = updatedTodo.status;
+          (<Todo> this.todo).dateDone = updatedTodo.dateDone;
+        }
+      );
+    }
+  }
+
   getStatusString(): String {
     if(this.todo) {
       return (this.todo?.status) ? 'Done' : 'To do';
