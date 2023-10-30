@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Todo} from "../todo";
-import {TodoService} from "../todo.service";
-import {ActivatedRoute} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Todo } from "../todo";
+import { TodoService } from "../todo.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-todo-view',
@@ -32,15 +32,6 @@ export class TodoViewComponent implements OnInit {
           (<Todo> this.todo).dateDone = updatedTodo.dateDone;
         }
       );
-    }
-  }
-
-  getStatusString(): String {
-    if(this.todo) {
-      return (this.todo?.status) ? 'Done' : 'To do';
-    }
-    else {
-      return "";
     }
   }
 }
