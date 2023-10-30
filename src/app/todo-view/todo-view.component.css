@@ -4,3 +4,20 @@ div {
     align-items:center;
     flex-flow: column;
 }
+
+button {
+  margin-bottom: 1.3em;
+}
+
+mat-card {
+  min-width: 25%;
+}
+
+mat-card-content {
+  padding: 2em;
+}
+
+mat-card-header, mat-card-content, mat-card-actions {
+  text-align: center;
+  align-self: center;
+}

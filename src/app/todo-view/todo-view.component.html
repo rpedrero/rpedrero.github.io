@@ -1,9 +1,19 @@
 <div *ngIf="todo">
-  <a [routerLink]="['/todo']">Back to list</a>
+  <button mat-raised-button [routerLink]="['/todo']">Back to list</button>
 
-  <h1>{{ todo.title }}</h1>
-
-  <p><strong>Description:</strong> {{ todo.description }}</p>
-
-  <p><strong>Status:</strong> {{ getStatusString() }}</p>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ todo.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-divider />
+    <mat-card-content>
+      <p>{{ todo.description }}</p>
+    </mat-card-content>
+    <mat-divider />
+    <mat-card-actions>
+      <mat-checkbox color="primary" [checked]="todo.status" (click)="onCheckboxStateChange()"
+                    (click)="$event.stopPropagation()">
+      </mat-checkbox>
+    </mat-card-actions>
+  </mat-card>
 </div>
