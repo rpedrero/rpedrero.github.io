@@ -11,7 +11,7 @@ button {
 
 #todo-list {
   width: 50%;
-  max-height: 72vh;
+  max-height: 68vh;
   overflow-y: scroll;
 }
 
