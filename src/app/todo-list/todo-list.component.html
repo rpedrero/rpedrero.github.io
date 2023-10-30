@@ -1,25 +1,16 @@
 <div>
   <button mat-raised-button color="primary" [routerLink]="['/todo/create']">New Todo</button>
-  <mat-list role="list">
-    <mat-card *ngFor="let todo of todos">
-      <mat-card-content>
-        <mat-checkbox color="primary" [checked]="todo.status" (change)="onCheckboxStateChange(todo)">
+
+  <h1>Todo list</h1>
+
+  <mat-list id="todo-list" role="list">
+    <mat-card class="task-container" *ngFor="let todo of todos" role="listitem">
+      <mat-card-content [routerLink]="['/todo', todo.id]">
+        <mat-checkbox color="primary" [checked]="todo.status" (change)="onCheckboxStateChange(todo)"
+                      (click)="$event.stopPropagation()">
           <a [routerLink]="['/todo', todo.id]" [class.task-done]="todo.status">{{ todo.title }}</a>
         </mat-checkbox>
       </mat-card-content>
     </mat-card>
   </mat-list>
-  <!--
-  <mat-list role="list">
-    <mat-list-item role="listitem" *ngFor="let todo of todos">
-      <mat-card>
-        <mat-card-content>
-          <mat-checkbox color="primary" [checked]="todo.status" (change)="onCheckboxStateChange(todo)">
-            <a [routerLink]="['/todo', todo.id]" [class.task-done]="todo.status">{{ todo.title }}</a>
-          </mat-checkbox>
-        </mat-card-content>
-      </mat-card>
-    </mat-list-item>
-  </mat-list>
-  -->
 </div>
