@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { TodoService } from "../todo.service";
 import { Router } from "@angular/router";
-import { Todo } from "../todo";
+import { Todo } from "../entity/todo";
+import {TodoServiceInterface} from "../service/todo.service.interface";
+import {TODO_SERVICE_TOKEN} from "../configuration/tokens";
 
 @Component({
   selector: 'app-todo-create',
@@ -15,7 +16,7 @@ export class TodoCreateComponent {
     description: new FormControl('')
   });
 
-  constructor(private todoService: TodoService, private router: Router) {}
+  constructor(@Inject(TODO_SERVICE_TOKEN) private todoService: TodoServiceInterface, private router: Router) {}
 
   onSubmit(): void {
     if(this.todoForm.valid) {

@@ -14,6 +14,9 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from "@angular/material/card";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import {REST_CONFIGURATION_TOKEN, TODO_CRUD_TOKEN, TODO_SERVICE_TOKEN} from "./configuration/tokens";
+import {TodoMockCrud} from "./crud/todo.mock.crud";
+import {TodoService} from "./service/todo.service";
 
 @NgModule({
   declarations: [
@@ -34,7 +37,17 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     MatCardModule,
     MatCheckboxModule
   ],
-  providers: [],
+  providers: [
+    {provide: TODO_CRUD_TOKEN, useClass: TodoMockCrud},
+    {provide: TODO_SERVICE_TOKEN, useClass: TodoService},
+    /*
+    //THIS IMPORT IS USELESS AS LONG WE USE THE MOCKED CRUD (TodoMockCrud) INSTEAD OF THE REST-BASED ONE (TodoRestCrud)
+    {provide: REST_CONFIGURATION_TOKEN, useValue: {
+
+        apiUrl: environment.apiUrl,
+        todoResourceUri: 'todo'
+    }}*/
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
