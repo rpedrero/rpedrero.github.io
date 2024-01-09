@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Todo} from "../todo";
-import {TodoService} from "../todo.service";
-import {ActivatedRoute} from "@angular/router";
+import {Component, Inject, OnInit} from '@angular/core';
+import { Todo } from "../entity/todo";
+import { ActivatedRoute } from "@angular/router";
+import {TODO_SERVICE_TOKEN} from "../configuration/tokens";
+import {TodoServiceInterface} from "../service/todo.service.interface";
 
 @Component({
   selector: 'app-todo-view',
@@ -11,7 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 export class TodoViewComponent implements OnInit {
   todo: Todo | undefined;
 
-  constructor(private todoService: TodoService, private route: ActivatedRoute) {}
+  constructor(@Inject(TODO_SERVICE_TOKEN) private todoService: TodoServiceInterface, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
@@ -32,15 +33,6 @@ export class TodoViewComponent implements OnInit {
           (<Todo> this.todo).dateDone = updatedTodo.dateDone;
         }
       );
-    }
-  }
-
-  getStatusString(): String {
-    if(this.todo) {
-      return (this.todo?.status) ? 'Done' : 'To do';
-    }
-    else {
-      return "";
     }
   }
 }
