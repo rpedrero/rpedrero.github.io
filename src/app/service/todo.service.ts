@@ -2,12 +2,11 @@ import {TodoServiceInterface} from './todo.service.interface';
 import {CrudInterface} from "../crud/crud.interface";
 import {Todo} from "../entity/todo";
 import {catchError, Observable, of} from "rxjs";
-import {Inject, Injectable} from "@angular/core";
-import {TODO_CRUD_TOKEN} from "../configuration/tokens";
+import {Injectable} from "@angular/core";
 
 @Injectable()
 export class TodoService implements TodoServiceInterface {
-  constructor(@Inject(TODO_CRUD_TOKEN) private todoCrud: CrudInterface<Todo>) {
+  constructor(private todoCrud: CrudInterface<Todo>) {
 
   }
 

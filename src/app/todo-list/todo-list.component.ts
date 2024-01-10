@@ -1,7 +1,6 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Todo } from "../entity/todo";
 import {TodoServiceInterface} from "../service/todo.service.interface";
-import {TODO_SERVICE_TOKEN} from "../configuration/tokens";
 
 @Component({
   selector: 'app-todo-list',
@@ -11,7 +10,7 @@ import {TODO_SERVICE_TOKEN} from "../configuration/tokens";
 export class TodoListComponent implements OnInit {
   todos: Todo[] | undefined;
 
-  constructor(@Inject(TODO_SERVICE_TOKEN) private todoService: TodoServiceInterface) {}
+  constructor(private todoService: TodoServiceInterface) {}
 
   ngOnInit(): void {
     this.todoService.getTodos().subscribe(
