@@ -14,9 +14,13 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from "@angular/material/card";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import {REST_CONFIGURATION_TOKEN, TODO_CRUD_TOKEN, TODO_SERVICE_TOKEN} from "./configuration/tokens";
-import {TodoMockCrud} from "./crud/todo.mock.crud";
+import {REST_CONFIGURATION_TOKEN} from "./configuration/rest.configuration.interface";
 import {TodoService} from "./service/todo.service";
+import {CrudInterface} from "./crud/crud.interface";
+import {Todo} from "./entity/todo";
+import {TodoServiceInterface} from "./service/todo.service.interface";
+import {environment} from "../environments/environment";
+import {TodoMockCrud} from "./crud/todo.mock.crud";
 
 @NgModule({
   declarations: [
@@ -38,15 +42,15 @@ import {TodoService} from "./service/todo.service";
     MatCheckboxModule
   ],
   providers: [
-    {provide: TODO_CRUD_TOKEN, useClass: TodoMockCrud},
-    {provide: TODO_SERVICE_TOKEN, useClass: TodoService},
-    /*
-    //THIS IMPORT IS USELESS AS LONG WE USE THE MOCKED CRUD (TodoMockCrud) INSTEAD OF THE REST-BASED ONE (TodoRestCrud)
-    {provide: REST_CONFIGURATION_TOKEN, useValue: {
-
+    {provide: CrudInterface<Todo>, useClass: TodoMockCrud},
+    {provide: TodoServiceInterface, useClass: TodoService},
+    {
+      provide: REST_CONFIGURATION_TOKEN,
+      useValue: {
         apiUrl: environment.apiUrl,
         todoResourceUri: 'todo'
-    }}*/
+      }
+    }
   ],
   bootstrap: [AppComponent]
 })
